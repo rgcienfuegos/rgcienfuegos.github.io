@@ -109,47 +109,79 @@
 
   </div>
 
-  <div class="container shadow-none p-3 mb-5 bg-light rounded">
+       <div class="container shadow-none p-3 mb-5 bg-light rounded">
 
 
 
 
 
 
-    <!-- Example row of columns -->
-    <h2 class="display-3">Lista de proyectos    <a id='btnRepos' class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></h2>
-    <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
-      <div class="col-md-4">
-        <h2>Proyecto 1</h2>
-        <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
-            <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Proyecto 2</h2>
-        <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
-            <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Proyecto N</h2>
-        <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
-            <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
-      </div> 
-
-      <div class="col-md-4" id = 'divResult'>
+        <!-- Example row of columns -->
+        <h2 class="display-3">Lista de proyectos    </h2>
 
 
-
-      </div>
+          <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="col-md-4">
+              <h2>Proyecto 1</h2>
+              <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
+                  <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+              <h2>Proyecto 2</h2>
+              <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
+                  <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+              <h2>Proyecto N</h2>
+              <p>La idea es mostrar aqui una descripcion de cada proyecto </p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a>
+                  <a class="btn btn-secondary" href="#" role="button">Ver demo &raquo;</a></p>
+            </div>
+    
+        </div>
 
 
     </div>
 
-    <hr>
+
+    <div class="container shadow-none p-3 mb-5 bg-light rounded">
+
+
+
+
+
+
+<!-- Example row of columns -->
+<h2 class="display-3">Lista de repositorios <a id='btnRepos' class="btn btn-secondary" href="#" role="button">Cargar repositorios &raquo;</a> </h2>
+
+
+  <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
+    <div id='divResult' class="col-md-4">
+
+    </div>
+    
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+    
 
   </div> <!-- /container -->
+
+
+ 
+
+
+
 
 </main>
 
@@ -178,21 +210,47 @@
                 const url = "https://api.github.com/users/rgcienfuegos/repos"
                 const response = await fetch(url)
                 const result = await response.json()
-                const divResultInt = document.createElement("div")
-                divResult.appendChild(divResultInt)
+              
+               
                 result.forEach(i=>{
                   
-                  const divResultInt2 = document.createElement("div")
+                  const divResultInt = document.createElement("div")
+                 
                     const tit = document.createElement("h2")
                     tit.href = i.html_url;
                     tit.textContent = i.name;                    
-                    divResultInt2.appendChild(tit)
-                    divResultInt2.appendChild(document.createElement("br"))
+                    divResultInt.appendChild(tit)
+                    divResultInt.appendChild(document.createElement("br"))
                     const desc = document.createElement("p")
                     desc.textContent=i.description;
-                    divResultInt2.appendChild(desc)
-                    divResultInt2.appendChild(document.createElement("br"))
-                 
+                    divResultInt.appendChild(desc)
+                    divResultInt.appendChild(document.createElement("br"))
+
+                    const butp = document.createElement("p")
+                   
+                    const but = document.createElement("a")
+                    but.classList= "btn btn-secondary";
+                    but.className="btn btn-secondary";
+                    but.role="button";
+                    but.textContent="Link demo"
+                    butp.appendChild(but)
+                    const but2 = document.createElement("a")
+                    but2.classList.add(["btn", "btn-secondary"] );
+                    but2.className="btn btn-secondary";
+                    but2.role="button";
+                    but2.textContent="Link codigo"
+                    butp.appendChild(but2)
+
+                    divResultInt.appendChild(butp);
+
+                    divResultInt.appendChild(document.createElement("br"))
+
+
+
+
+
+                    divResult.append(divResultInt)
+
                })
 
              }
