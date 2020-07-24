@@ -18,7 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script></body>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script></body>
 
 
 
@@ -51,8 +51,47 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+
+
+
+<body>
+
+    <button id = 'btnRepos'>Repos</button>
+            <div id = 'divResult'>
+
+            </div>
+
+    <script>
+    const btnRepos = document.getElementById("btnRepos")
+
+            function clear(){
+             while(divResult.firstChild) 
+                divResult.removeChild(divResult.firstChild)
+            }
+    
+            async function getRepos() {
+                 clear();
+                const url = "https://api.github.com/users/rgcienfuegos/repos"
+                const response = await fetch(url)
+                const result = await response.json()
+
+                result.forEach(i=>{
+
+                    const anchor = document.createElement("a")
+                    anchor.href = i.html_url;
+                    anchor.textContent = i.full_name;
+                    divResult.appendChild(anchor)
+                    divResult.appendChild(document.createElement("br"))
+
+               })
+
+             }
+    
+    </script>
+
+
+
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" href="#">Principal</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,14 +136,18 @@
     <div class="container" >
       <h1 class="display-5">Bienvenido al repositorio de rgcienfuegos!</h1>
       <p>Este repositorio esta en construccion con el fin de compartir los desarrollos que utilizo para aprender</p>
-    <!--   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
-  <div class="jumbotron">
-    </div>
+
   </div>
 
   <div class="container shadow-none p-3 mb-5 bg-light rounded">
+
+
+
+
+
+
     <!-- Example row of columns -->
-    <h2 class="display-3">Lista de proyectos</h2>
+    <h2 class="display-3">Lista de proyectos    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></h2>
     <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
       <div class="col-md-4">
         <h2>Proyecto 1</h2>
