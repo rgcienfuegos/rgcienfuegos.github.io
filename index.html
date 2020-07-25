@@ -152,38 +152,20 @@
   <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
     <div id='divResult' class="col-md-4">
 
-    </div>
-    
-
+    </div>    
 </div>
 
+</div> 
+</div> <!-- /container -->
+ </main>
 
-</div>
-
-
-
-
-
-
-    
-
-  </div> <!-- /container -->
-
-
- 
-
-
-
-
-</main>
-
-<footer class="container">
+<footer class="container fixed-botton bg-dark">
   <p> Creepypasto 2020©</p>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="./scripts/script.js"></script>
       
     <script>
     
@@ -200,50 +182,44 @@
                 const url = "https://api.github.com/users/rgcienfuegos/repos"
                 const response = await fetch(url)
                 const result = await response.json()
-              
-               
-                result.forEach(i=>{
+
+             
+
+
+                var counter = 2;
+
+                result.forEach(i=>{                  
                   
-                  const divResultInt = document.createElement("divResult")
-                 
-                    const tit = document.createElement("h2")
-                    tit.href = i.html_url;
-                    tit.textContent = i.name;                    
-                    divResultInt.appendChild(tit)
-                    divResultInt.appendChild(document.createElement("br"))
-                    const desc = document.createElement("p")
-                    desc.textContent=i.description;
-                    divResultInt.appendChild(desc)
-                    divResultInt.appendChild(document.createElement("br"))
+                  counter=counter+1;
 
-                    const butp = document.createElement("p")
+                  let  repoHTML =`<div id='repoSample`+counter+`'class="col-md-4">
+                              <h2 id='nameRepo`+counter+`'></h2>
+                              <p id='desRepo`+counter+`'></p>
+                              <p><a id='butRepoDet`+counter+`' class="btn btn-secondary" href="#" role="button">Mas info&raquo;</a>
+                                  <a id='butRepoDem`+counter+`' class="btn btn-secondary" href="https://rgcienfuegos.github.io/`+i.name+`//" role="button">Link demo &raquo;</a>
+                                  </p>
+                            </div>`
+
+
+
+                            let div = document.createElement("div");
+                          
+                            div.innerHTML = repoHTML;
+                            divResult.append(div)   
+                            let nameRepo = document.getElementById("nameRepo"+counter);  
+                            nameRepo.href = i.html_url;
+                            nameRepo.textContent = i.name;  
+                            let desRepo = document.getElementById("desRepo"+counter);  
+                            desRepo.textContent = i.description;
+
+                                        
+                         
+                          })
+
+}
+
                    
-                    const but = document.createElement("a")
-                    but.classList= "btn btn-secondary";
-                    but.className="btn btn-secondary";
-                    but.role="button";
-                    but.textContent="Link demo"
-                    butp.appendChild(but)
-                    const but2 = document.createElement("a")
-                    but2.classList="btn btn-secondary";
-                    but2.className="btn btn-secondary";
-                    but2.role="button";
-                    but2.textContent="Link codigo"
-                    butp.appendChild(but2)
 
-                    divResultInt.appendChild(butp);
-
-                    divResultInt.appendChild(document.createElement("br"))
-
-
-
-
-
-                    divResult.append(divResultInt)
-
-               })
-
-             }
     
     </script>
       </body>
