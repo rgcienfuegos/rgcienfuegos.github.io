@@ -148,7 +148,7 @@
 
 
 <!-- Example row of columns -->
-<h2 class="display-3">Lista de repositorios <a id='btnRepos' class="btn btn-secondary" href="#" role="button">Cargar repositorios &raquo;</a> </h2>
+<h2 class="display-3">Lista de repositorios</h2>
 
 
   <div class="row .shadow-lg p-3 mb-5 bg-white rounded">
@@ -191,7 +191,7 @@
     const btnRepos = document.getElementById("btnRepos")
     const divResult = document.getElementById("divResult")
     btnRepos.addEventListener("click", getRepos)
-
+window.onload=getRepos();
 
             function clear(){
              while(divResult.firstChild) 
