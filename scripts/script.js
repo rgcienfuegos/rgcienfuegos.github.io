@@ -21,15 +21,15 @@ window.onload=getRepos();
               
               counter=counter+1;
 
-              let  repoHTML =`<h2 id='nameRepo`+counter+`'></h2>
-                          <p id='desRepo`+counter+`'></p>
-                          <p><a id='butRepoDet`+counter+`' class="btn btn-secondary" href="#" role="button">Mas info&raquo;</a>
-                              <a id='butRepoDem`+counter+`' class="btn btn-secondary" href="https://rgcienfuegos.github.io/`+i.name+`//" role="button">Link demo &raquo;</a>
-                              </p>
-                            `
-
-
-
+              let  repoHTML =`
+              <h2 id='nameRepo`+counter+`'></h2>
+              <p id='desRepo`+counter+`'></p>
+              <p>
+                <a id='butRepoDet`+counter+`' class="btn btn-secondary" href="#" role="button">Mas info&raquo;</a>
+                <a id='butRepoDem`+counter+`' class="btn btn-secondary" href="https://rgcienfuegos.github.io/`+i.name+`//" role="button">Link demo &raquo;</a>
+              </p>
+              `
+         
                         let div = document.createElement("div");
                       
                         div.innerHTML = repoHTML;
