@@ -1,20 +1,25 @@
-const divResult = document.getElementById("divResult");   
-window.onload=getRepos();
-
         function clear(){
          while(divResult.firstChild) 
             divResult.removeChild(divResult.firstChild)
         }
 
         async function getRepos() {
-             clear();
-            const url = "https://api.github.com/users/rgcienfuegos/repos"
-            const response = await fetch(url)
-            const result = await response.json()
+            
+             try {
+              const url = "https://api.github.com/users/rgcienfuegos/repos"
+              const response = await fetch(url)
+              const result = await response.json()
+  
+             } catch (error) {
 
+               
+             }
+             
+            return result;
+            }    
          
 
-
+            function getElements(result) {
             let counter = 0;
 
             result.forEach(i=>{                  
@@ -47,4 +52,11 @@ window.onload=getRepos();
 
 }
 
+
+
+const divResult = document.getElementById("divResult");   
+window.onload=getRepos();
+clear();
+const jsonResult = getRepos();
+getElements(jsonResult);
     
