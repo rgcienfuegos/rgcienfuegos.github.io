@@ -13,13 +13,13 @@ function clear(){
             result.forEach(i=>{             
               counter=counter+1;                        
               if (!i.fork) {
-
                 let  repoHTML =`
                 <h2 id='nameRepo`+counter+`'></h2>
                 <p id='desRepo`+counter+`'></p>
                 <p>
-                  <a id='butRepoDem`+counter+`' class="btn btn-secondary " href="https://rgcienfuegos.github.io/`+i.name+`//" role="button">Link demo &raquo;</a>
-                </p>
+                  <a id='butRepoDem`+counter+`' class="btn btn-secondary " href="https://rgcienfuegos.github.io/`+i.name+`//" role="button">Go Demo &raquo;</a>
+                  <a id='butRepoUrl`+counter+`' class="btn btn-secondary " role="button">Go Repo &raquo;</a>
+                  </p>
                 `       
                           let div = document.createElement("div");                      
                           div.innerHTML = repoHTML;
@@ -29,7 +29,12 @@ function clear(){
                           nameRepo.href = i.html_url;
                           nameRepo.textContent = i.name;  
                           let desRepo = document.getElementById("desRepo"+counter);  
-                          desRepo.textContent = i.description;              
+                          desRepo.textContent = i.description;  
+                          let urlRepo = document.getElementById("butRepoUrl"+counter);  
+                          urlRepo.href = i.html_url; 
+                          
+                         
+                          
               }
                       })
                     }
